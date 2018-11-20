@@ -24,7 +24,7 @@ def hello():
 #     return "Hi You're in room " + str(room_id)
 
 @app.route('/', defaults={'path': ''})
-# @app.route('/<path:path>')
+@app.route('/<path:path>')
 def index(path):
     name = request.cookies.get('session')
     print ("caught in path")
