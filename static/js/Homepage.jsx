@@ -7,7 +7,7 @@ class Homepage extends Component {
         super(props);
 
         this.state = {
-            username: ""
+            username: undefined
         };
 
         this.onEnterKeyPress = this.onEnterKeyPress.bind(this);
@@ -25,8 +25,10 @@ class Homepage extends Component {
                 console.log(resJson)
                 if (resJson.success) {
                     this.setState({
-                        username: resJson.username,
+                        username: resJson.user.name,
                     });
+
+                    console.log(this.state)
                 } else {
                     // user has session but is not in database, cookie has been cleared by server
                     console.log("server issue...")
@@ -34,10 +36,6 @@ class Homepage extends Component {
                 }
             });
         }
-    }
-
-    componentDidMount() {
-        this.fetchUserInfo();
     }
 
 
@@ -77,6 +75,11 @@ class Homepage extends Component {
             document.getElementById("username").blur();
         }
     };
+
+
+    componentWillMount() {
+        this.fetchUserInfo()
+    }
 
     render() {
 
