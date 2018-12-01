@@ -25,7 +25,7 @@ class Homepage extends Component {
                 console.log(resJson)
                 if (resJson.success) {
                     this.setState({
-                        username: resJson.user.name,
+                        username: resJson.user.username,
                     });
 
                     console.log(this.state)
